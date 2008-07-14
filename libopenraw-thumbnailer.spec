@@ -18,6 +18,9 @@ BuildRequires:	libgsf-gnome-devel
 BuildRequires:	libopenraw-gnome-devel >= 0.0.4
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build-macros >= 1.311
+Requires(post,preun):	GConf2
+Requires(post,postun):	shared-mime-info
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -48,6 +51,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+%gconf_schema_install raw-thumbnailer.schemas
+%update_mime_database
+
+%preun
+%gconf_schema_uninstall raw-thumbnailer.schemas
+
+%postun
+%update_mime_database
 
 %files
 %defattr(644,root,root,755)
