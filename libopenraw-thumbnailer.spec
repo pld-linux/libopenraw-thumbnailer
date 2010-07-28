@@ -18,9 +18,9 @@ BuildRequires:	libgsf-gnome-devel
 BuildRequires:	libopenraw-gnome-devel >= 0.0.4
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-BuildRequires:	rpm-build-macros >= 1.311
-Requires(post,preun):	GConf2
+BuildRequires:	rpmbuild(macros) >= 1.311
 Requires(post,postun):	shared-mime-info
+Requires(post,preun):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
