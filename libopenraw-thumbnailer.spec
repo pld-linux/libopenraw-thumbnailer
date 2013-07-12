@@ -1,26 +1,24 @@
 Summary:	RawThumbnailer - RAW files thumbnailer for the GNOME Nautilus file manager
 Summary(pl.UTF-8):	RawThumbnailer - program do miniaturek plików RAW dla zarządcy plików Nautilus
 Name:		libopenraw-thumbnailer
-Version:	0.99.1
-Release:	0.1
+Version:	3.0.0
+Release:	1
 License:	GPL v2+
-Group:		Applications/Graphics
-Source0:	http://libopenraw.freedesktop.org/download/raw-thumbnailer-%{version}.tar.gz
-# Source0-md5:	8b166320b17fa906bf0503ed3b6ba226
+Group:		X11/Applications/Graphics
+Source0:	http://libopenraw.freedesktop.org/download/raw-thumbnailer-%{version}.tar.bz2
+# Source0-md5:	fc56f327b3e2b2c647abd99b728b27a2
 URL:		http://libopenraw.freedesktop.org/wiki/RawThumbnailer
-BuildRequires:	GConf2-devel
 BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
-BuildRequires:	gnome-vfs2-devel >= 2.0
-BuildRequires:	gtk+2-devel >= 1:2.0
+BuildRequires:	automake >= 1:1.11
+BuildRequires:	gdk-pixbuf2-devel >= 2.0
+BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	intltool >= 0.21
-BuildRequires:	libgsf-gnome-devel
-BuildRequires:	libopenraw-gnome-devel >= 0.0.4
+BuildRequires:	libopenraw-gnome-devel >= 0.0.9
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 Requires(post,postun):	shared-mime-info
-Requires(post,preun):	GConf2
+Requires:	libopenraw-gnome-devel >= 0.0.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,7 +38,8 @@ z zarządcą plików Nautilus ze środowiska GNOME.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	--disable-silent-rules
 %{__make}
 
 %install
@@ -53,11 +52,7 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install raw-thumbnailer.schemas
 %update_mime_database
-
-%preun
-%gconf_schema_uninstall raw-thumbnailer.schemas
 
 %postun
 %update_mime_database
@@ -67,4 +62,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS
 %attr(755,root,root) %{_bindir}/raw-thumbnailer
 %{_datadir}/mime/packages/raw-thumbnailer.xml
-%{_sysconfdir}/gconf/schemas/raw-thumbnailer.schemas
+%{_datadir}/thumbnailers/raw.thumbnailer
