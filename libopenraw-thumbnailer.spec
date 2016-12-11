@@ -14,12 +14,12 @@ BuildRequires:	automake >= 1:1.11
 BuildRequires:	gdk-pixbuf2-devel >= 2.0
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	intltool >= 0.21
-BuildRequires:	libopenraw-gnome-devel >= 0.0.9
+BuildRequires:	libopenraw-gnome-devel >= 0.1.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 Requires(post,postun):	shared-mime-info
-Requires:	libopenraw-gnome-devel >= 0.0.9
+Requires:	libopenraw-gnome-devel >= 0.1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
