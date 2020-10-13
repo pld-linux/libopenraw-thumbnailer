@@ -2,7 +2,7 @@ Summary:	RawThumbnailer - RAW files thumbnailer for the GNOME Nautilus file mana
 Summary(pl.UTF-8):	RawThumbnailer - program do miniaturek plików RAW dla zarządcy plików Nautilus
 Name:		libopenraw-thumbnailer
 Version:	3.0.0
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://libopenraw.freedesktop.org/download/raw-thumbnailer-%{version}.tar.bz2
@@ -19,7 +19,7 @@ BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 Requires(post,postun):	shared-mime-info
-Requires:	libopenraw-gnome-devel >= 0.1.0
+Requires:	libopenraw-gnome >= 0.1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
